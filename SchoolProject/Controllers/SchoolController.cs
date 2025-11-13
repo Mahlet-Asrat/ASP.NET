@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using SchoolApi.Dtos;
+using SchoolApi.SchoolProject.Dtos;
 using SchoolApi.Services;
 
-namespace SchoolApi.Controllers
+namespace SchoolApi.SchoolProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

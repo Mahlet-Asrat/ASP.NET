@@ -1,7 +1,6 @@
-﻿using SchoolApi.Models;
-using SchoolApi.Repositories;
-using AutoMapper;
-using SchoolApi.Dtos;
+﻿using AutoMapper;
+using SchoolApi.SchoolProject.Repositories;
+using SchoolApi.SchoolProject.Dtos;
 
 namespace SchoolApi.Services
 {
@@ -31,7 +30,7 @@ namespace SchoolApi.Services
 
         public async Task<ReadSchoolDto> CreateAsync(CreateSchoolDto dto, CancellationToken ct = default)
         {
-            var newSchool = _mapper.Map<SchoolApi.Models.School>(dto);
+            var newSchool = _mapper.Map<SchoolProject.Models.School>(dto);
             var added = await _repo.AddAsync(newSchool, ct);
             return _mapper.Map<ReadSchoolDto>(added);
         }

@@ -1,4 +1,4 @@
-﻿namespace SchoolApi.Dtos
+﻿namespace SchoolApi.SchoolProject.Dtos
 {
     public class ReadSchoolDto
     {

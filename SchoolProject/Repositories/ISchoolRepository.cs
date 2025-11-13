@@ -1,10 +1,4 @@
-﻿
-
-
-
-
-
-namespace SchoolApi.Repositories
+﻿namespace SchoolApi.SchoolProject.Repositories
 {
     public interface ISchoolRepository
     {

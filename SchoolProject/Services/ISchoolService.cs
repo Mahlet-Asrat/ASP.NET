@@ -1,4 +1,4 @@
-﻿using SchoolApi.Dtos;
+﻿using SchoolApi.SchoolProject.Dtos;
 
 namespace SchoolApi.Services
 {

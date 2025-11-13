@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SchoolApi.Models;
+using SchoolApi.SchoolProject.Models;
 
-namespace SchoolApi.EntityConfigurations
+namespace SchoolApi.SchoolProject.EntityConfigurations
 {
     public class SchoolConfiguration : IEntityTypeConfiguration<ISchool>
     {

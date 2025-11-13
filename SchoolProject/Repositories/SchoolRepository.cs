@@ -1,11 +1,11 @@
-﻿using SchoolApi.Data;
-using SchoolApi.Models;
+﻿using SchoolApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Dapper;
 using System.Data;
+using SchoolApi.SchoolProject.Data;
 
 
-namespace SchoolApi.Repositories
+namespace SchoolApi.SchoolProject.Repositories
 {
     public class SchoolRepository : ISchoolRepository
     {
@@ -17,7 +17,7 @@ namespace SchoolApi.Repositories
         }
 
         // using dapper
-        public async Task<IEnumerable<SchoolApi.Models.School>> GetAllASync(CancellationToken ct = default)
+        public async Task<IEnumerable<Models.School>> GetAllASync(CancellationToken ct = default)
         {
             using var conn = _context.Database.GetDbConnection();
             if (conn.State != ConnectionState.Open)
@@ -25,11 +25,11 @@ namespace SchoolApi.Repositories
                 await conn.OpenAsync(ct);
             }
             var sql = "SELECT id, name, director, teachers, students FROM schools";
-            var result = await conn.QueryAsync<SchoolApi.Models.School>(sql);
+            var result = await conn.QueryAsync<Models.School>(sql);
             return result;
         }
 
-        public async Task<SchoolApi.Models.School?> GetByIdAsync(int id, CancellationToken ct = default)
+        public async Task<Models.School?> GetByIdAsync(int id, CancellationToken ct = default)
         {
             using var conn = _context.Database.GetDbConnection();
             if (conn.State != ConnectionState.Open)
@@ -37,25 +37,25 @@ namespace SchoolApi.Repositories
                 await conn.OpenAsync(ct);
             }
             var sql = "SELECT id, name, director, teachers, students FROM schools WHERE id = @Id";
-            return await conn.QuerySingleOrDefaultAsync<SchoolApi.Models.School>(sql, new { Id = id });
+            return await conn.QuerySingleOrDefaultAsync<Models.School>(sql, new { Id = id });
         }
 
         // using EF Core
 
-        public async Task<SchoolApi.Models.School> AddAsync(SchoolApi.Models.School school, CancellationToken ct = default)
+        public async Task<Models.School> AddAsync(Models.School school, CancellationToken ct = default)
         {
             _context.Schools.Add(school);
             await _context.SaveChangesAsync(ct);
             return school;
         }
 
-        public async Task UpdateAsync(SchoolApi.Models.School school, CancellationToken ct = default)
+        public async Task UpdateAsync(Models.School school, CancellationToken ct = default)
         {
             _context.Schools.Update(school);
             await _context.SaveChangesAsync(ct);
         }
 
-        public async Task DeleteAsync(SchoolApi.Models.School school, CancellationToken ct = default)
+        public async Task DeleteAsync(Models.School school, CancellationToken ct = default)
         {
             _context.Schools.Remove(school);
             await _context.SaveChangesAsync();

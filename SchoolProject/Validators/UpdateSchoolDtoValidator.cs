@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using SchoolApi.Dtos;
+using SchoolApi.SchoolProject.Dtos;
 
 namespace SchoolApi.Validators
 {
